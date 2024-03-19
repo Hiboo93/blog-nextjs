@@ -1,14 +1,15 @@
 "use client"
 
 import { Moon, Sun } from 'lucide-react'
-import React from 'react'
 import { Button } from './ui/button'
+import { useTheme } from 'next-themes'
+
 
 const ToggleTheme = () => {
+  const {theme, setTheme} = useTheme()
   const toggleTheme = () => {
-    
+    setTheme(theme === "dark" ? "light" : "dark")
   }
-  
 
   return (
     <Button className='flex justify-center' variant="ghost" size="icon" onClick={toggleTheme}>
