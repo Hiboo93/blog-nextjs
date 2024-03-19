@@ -14,7 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { CATEGORIES } from "@/utils/categories"
-import { Category } from "@/types.js"
+import { Category } from "@/types"
 
 
 

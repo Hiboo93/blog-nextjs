@@ -1,6 +1,6 @@
-import Link from 'next/link.js'
-import React from 'react'
-import { Button } from './ui/button'
+import Link from 'next/link.js';
+import React from 'react';
+import { Button } from './ui/button';
 
 type Props = {}
 

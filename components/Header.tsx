@@ -1,8 +1,9 @@
-import React from 'react'
-import PageContainer from './Page-container'
-import { HeaderNavigation } from './Header-navigation'
-import ProfileButton from './profile-button'
-import ResponsiveMenu from './ResponsiveMenu'
+
+import PageContainer from './Page-container';
+import { HeaderNavigation } from './Header-navigation';
+import ProfileButton from './Profile-button';
+import ResponsiveMenu from './ResponsiveMenu';
+import ToggleTheme from './toggleTheme';
 
 
 type Props = {}
@@ -22,7 +23,9 @@ const Header = (props: Props) => {
           <HeaderNavigation/>
           
           {/* Buttons */}
-          <div className='flex items-center'>
+          <div className='flex items-center gap-2'>
+            {/* toogle */}
+            <ToggleTheme/>
             <ProfileButton/>
           </div>
         </div>
