@@ -21,6 +21,7 @@ function SinglePostsPage() {
     slug: "react-state-management-choosing-right-solution",
     content: "Hello",
   };
+  
   return (
     <PageContainer>
       <div className="p-8">
@@ -65,7 +66,9 @@ function SinglePostsPage() {
         <Separator />
 
         {/* section 2 */}
-        <div className="mt-6" dangerouslySetInnerHTML={{
+        <div 
+          className="mt-6" 
+          dangerouslySetInnerHTML={{
           __html: POST.content as string,
         }}>
         </div>
