@@ -1,3 +1,7 @@
+import PageContainer from '@/components/Page-container';
+import { PageTitle } from '@/components/pageTitle';
+import PostsList from '@/components/postsList';
+import { POSTS } from '@/utils/posts';
 import React from 'react'
 
 type Props = {
@@ -11,9 +15,12 @@ function CategoriesPage({ params }: Props) {
   const { slug } = params
 
   return (
-    <div>
-      Categories Page {slug}
-    </div>
+    <PageContainer>
+      <div className='py-10 px-4'>
+        <PageTitle title={slug.replace("-", " ")} />
+        <PostsList posts={POSTS} />
+      </div>
+    </PageContainer>
   )
 }
 
