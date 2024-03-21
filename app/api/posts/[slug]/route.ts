@@ -2,7 +2,7 @@ import { Post } from "@/types";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/connect";
 
-type Params = {
+export type Params = {
   params: {
     slug: string;
   }

@@ -18,3 +18,9 @@ export type Post = {
   slug: string;
   content?: string;
 };
+
+export type Params = {
+  params: {
+    slug: string;
+  }
+};
