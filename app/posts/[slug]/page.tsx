@@ -1,27 +1,21 @@
+"use client"
+
 import PageContainer from "@/components/Page-container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { Post } from "@/types";
+import { usePost } from "@/hooks/usePost";
+import { Params } from "@/types";
 import { Eye, MessageCircle } from "lucide-react";
 
 
-function SinglePostsPage() {
-  const POST: Post = {
-    id: 1,
-    category: "React",
-    title: "React State Management: Choosing the Right Solution",
-    image: "/react-state-management.jpg",
-    caption:
-      "Explore different state management solutions in React and choose the one that fits your needs.",
-    date: "2023-01-15",
-    minutesToRead: 10,
-    author: "John ReactDev",
-    nbViews: 25,
-    nbComments: 8,
-    slug: "react-state-management-choosing-right-solution",
-    content: "Hello",
-  };
-  
+
+function SinglePostPage({ params }: Params) {
+  const {slug} = params
+  const {data: post, isFetching, error} = usePost(slug)
+
+  if (isFetching) return <p>Loading</p>
+  if (error) return <p>Error</p>
+
   return (
     <PageContainer>
       <div className="p-8">
@@ -32,7 +26,7 @@ function SinglePostsPage() {
           <div className="h-full w-full flex flex-col justify-center items-center">
             <div className="sm:max-w-xl max-w-xs bg-secondary/80 p-4 rounded-lg">
               <h1 className="text-center font-bold text-3xl sm:text-5xl text-black dark:text-white">
-                {POST.title}
+                {post?.title}
               </h1>
             </div>
           </div>
@@ -42,24 +36,24 @@ function SinglePostsPage() {
           <div className="flex justify-center items-center gap-3">
             <Avatar>
               <AvatarImage src="/img/xavatario.png" />
-              <AvatarFallback>{POST.author}</AvatarFallback>
+              {/* <AvatarFallback>{post.author}</AvatarFallback> */}
             </Avatar>
             <div>
-              <p>{POST.author}</p>
-              <p className="text-slate-500 text-sm">
-                Posted on {new Date(POST.date).toLocaleDateString()}
-              </p>
+              {/* <p>{post.author}</p> */}
+              {post?.createdAt && <p className="text-slate-500 text-sm">
+                Posted on {new Date(post?.createdAt).toLocaleDateString()}
+              </p>}
             </div>
           </div>
 
           <div className="flex gap-2">
             <div className="flex items-center gap-1">
               <MessageCircle size={24} />
-              <p>{POST.nbComments}</p>
+              <p>{post?.nbComments}</p>
             </div>
             <div className="flex items-center gap-1">
               <Eye size={24} />
-              <p>{POST.nbViews}</p>
+              <p>{post?.view}</p>
             </div>
           </div>
         </div>
@@ -69,7 +63,7 @@ function SinglePostsPage() {
         <div 
           className="mt-6" 
           dangerouslySetInnerHTML={{
-          __html: POST.content as string,
+          __html: post?.content as string,
         }}>
         </div>
       </div>
@@ -77,4 +71,4 @@ function SinglePostsPage() {
   );
 }
 
-export default SinglePostsPage;
+export default SinglePostPage;
